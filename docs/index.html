@@ -19,11 +19,11 @@
 
     <h1 class="page-title">Home</h1>
 
-    
 
 
 
-    
+
+
 
 
     <h3> </h3>
@@ -37,7 +37,7 @@
 
 
 
-    
+
 
 
 
@@ -142,11 +142,11 @@ export default SampleApp;
 <p>Starting from version 3.0.2, we have introduced support for Expo, React Native for Web, and other platforms utilizing React Native that do not support iOS and Android directly.
 To enable this feature,
 <br>Step 1:</p>
-<pre class="prettyprint source"><code>npm install @react-native-async-storage/async-storage
+<pre class="prettyprint source"><code>npm install react-native-mmkv
 </code></pre>
 <p>When JavaScript mode is enabled, Mixpanel utilizes <a href="https://react-native-async-storage.github.io/async-storage/">AsyncStorage</a> to persist data. If you prefer not to use it, or if AsyncStorage is unavailable in your target environment, you can import or define a different storage class. However, it must follow a subset (see: <a href="index.d.ts"><code>MixpanelAsyncStorage</code></a>) of the same interface as <a href="https://react-native-async-storage.github.io/async-storage/">AsyncStorage</a> The following example demonstrates how to use a custom storage solution:</p>
 <pre class="prettyprint source"><code>// Optional: if you do not want to use the default AsyncStorage
-const MyAsyncStorage = require(&quot;@my-org/&lt;library-path>/AsyncStorage&quot;); 
+const MyAsyncStorage = require(&quot;@my-org/&lt;library-path>/AsyncStorage&quot;);
 const trackAutomaticEvents = false;
 const useNative = false;
 const mixpanel = new Mixpanel('YOUR_TOKEN', trackAutomaticEvents, useNative, MyAsyncStorage);

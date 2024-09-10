@@ -4,10 +4,11 @@ export class AsyncStorageAdapter {
   constructor(storage) {
     if (!storage) {
       try {
-        this.storage = require("@react-native-async-storage/async-storage");
+        const { MMKV } = require("react-native-mmkv");
+        this.storage = new MMKV({ id: `statistic-storage` });
       } catch {
         console.error(
-          "[@RNC/AsyncStorage]: NativeModule: AsyncStorage is null. Please run 'npm install @react-native-async-storage/async-storage' or follow the Mixpanel guide to set up your own Storage class."
+          "[@RNC/AsyncStorage]: NativeModule: AsyncStorage is null. Please run 'npm install react-native-mmkv' or follow the Mixpanel guide to set up your own Storage class."
         );
         console.error("[Mixpanel] Falling back to in-memory storage");
         this.storage = new InMemoryStorage();
@@ -17,26 +18,26 @@ export class AsyncStorageAdapter {
     }
   }
 
-  async getItem(key) {
+  getItem(key) {
     try {
-      return await this.storage.getItem(key);
+      return this.storage.getString(key);
     } catch {
       MixpanelLogger.error("error getting item from storage");
       return null;
     }
   }
 
-  async setItem(key, value) {
+  setItem(key, value) {
     try {
-      await this.storage.setItem(key, value);
+      this.storage.set(key, value);
     } catch {
       MixpanelLogger.error("error setting item in storage");
     }
   }
 
-  async removeItem(key) {
+  removeItem(key) {
     try {
-      await this.storage.removeItem(key);
+      this.storage.delete(key);
     } catch {
       MixpanelLogger.error("error removing item from storage");
     }

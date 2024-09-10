@@ -13,10 +13,10 @@ jest.mock("uuid", () => ({
   v4: jest.fn(),
 }));
 
-jest.mock("@react-native-async-storage/async-storage", () => ({
-  getItem: jest.fn().mockResolvedValue(null),
-  setItem: jest.fn().mockResolvedValue(undefined),
-  removeItem: jest.fn().mockResolvedValue(undefined),
+jest.mock("react-native-mmkv", () => ({
+  getString: jest.fn().mockResolvedValue(null),
+  set: jest.fn().mockResolvedValue(undefined),
+  delete: jest.fn().mockResolvedValue(undefined),
 }));
 
 jest.doMock("react-native", () => {
