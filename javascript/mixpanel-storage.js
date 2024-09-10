@@ -18,7 +18,7 @@ export class AsyncStorageAdapter {
     }
   }
 
-  getItem(key) {
+  async getItem(key) {
     try {
       return this.storage.getString(key);
     } catch {
@@ -27,7 +27,7 @@ export class AsyncStorageAdapter {
     }
   }
 
-  setItem(key, value) {
+  async setItem(key, value) {
     try {
       this.storage.set(key, value);
     } catch {
@@ -35,7 +35,7 @@ export class AsyncStorageAdapter {
     }
   }
 
-  removeItem(key) {
+  async removeItem(key) {
     try {
       this.storage.delete(key);
     } catch {
